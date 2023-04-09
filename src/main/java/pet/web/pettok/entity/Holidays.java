@@ -3,6 +3,7 @@ package pet.web.pettok.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
@@ -19,6 +20,7 @@ public class Holidays {
     private Long id;
     private String day;
     private String name;
+
     private Month month;
 
 

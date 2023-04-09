@@ -21,7 +21,7 @@
 <div class="main">
     <div class="white">
         <h1>Nie masz jeszcze u nas konta?</h1>
-        <h2>Kliknij <a href="#">Stwórz konto</a> </h2>
+        <h2>Kliknij <a href="/register">Stwórz konto</a> </h2>
         <h2>Lub kliknij <a href="#">Zaloguj się</a>, aby się zalogować</h2>
         <p class="bot-text">Strona stworzona z myślą o naszych słodkich pupilach</p>
         <img class="foot" src="img/paw.png">
