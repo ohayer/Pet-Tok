@@ -16,13 +16,25 @@
 <body>
 <div class="header">
     <a href="/">Strona główna</a>
-    <a href="#">Zaloguj się</a>
+    <% if (session.getAttribute("email") != null) { %>
+    <a href="http://localhost:8080/logout">Wyloguj się</a>
+    <% } else { %>
+    <a href="/login">Zaloguj się</a>
+    <% } %>
+
 </div>
 <div class="main">
     <div class="white">
+        <% if (session.getAttribute("email") != null) { %>
+       <h1>Witaj ${name}</h1>
+        <% } else { %>
         <h1>Nie masz jeszcze u nas konta?</h1>
         <h2>Kliknij <a href="/register">Stwórz konto</a> </h2>
-        <h2>Lub kliknij <a href="#">Zaloguj się</a>, aby się zalogować</h2>
+        <h2>Lub kliknij <a href="/login">Zaloguj się</a>, aby się zalogować</h2>
+        <% } %>
+<%--        <h1>Nie masz jeszcze u nas konta?</h1>--%>
+<%--        <h2>Kliknij <a href="/register">Stwórz konto</a> </h2>--%>
+<%--        <h2>Lub kliknij <a href="/login">Zaloguj się</a>, aby się zalogować</h2>--%>
         <p class="bot-text">Strona stworzona z myślą o naszych słodkich pupilach</p>
         <img class="foot" src="img/paw.png">
     </div>

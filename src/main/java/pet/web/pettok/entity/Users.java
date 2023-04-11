@@ -24,6 +24,7 @@ public class Users {
     private String surname;
     @Column(unique = true)
     @Email(message = "Wpisz poprawny email.")
+    @NotNull
     private String email;
     private String password;
     @AssertTrue(message = "Musisz zaakceptować regulamin.")

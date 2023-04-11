@@ -71,4 +71,9 @@ public class LoginController {
             return "redirect:/login";
         }
     }
+    @GetMapping("/logout")
+    public String getLogout(HttpSession session){
+        session.removeAttribute("email");
+        return "redirect:http://localhost:8080/";
+    }
 }
