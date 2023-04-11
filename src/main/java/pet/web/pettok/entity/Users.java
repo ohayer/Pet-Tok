@@ -1,11 +1,9 @@
 package pet.web.pettok.entity;
 
 import lombok.*;
+import org.hibernate.validator.constraints.UniqueElements;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
@@ -24,6 +22,7 @@ public class Users {
     private String name;
     @NotNull(message = "To pole nie może być puste.")
     private String surname;
+    @Column(unique = true)
     @Email(message = "Wpisz poprawny email.")
     private String email;
     private String password;
