@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Setter
 @Getter
@@ -24,8 +25,9 @@ public class Users {
     private String surname;
     @Column(unique = true)
     @Email(message = "Wpisz poprawny email.")
-    @NotNull
+    @NotNull(message = "To pole nie może być puste.")
     private String email;
+    @Size(min = 6,message = "To pole musi być trochę dłuższe.")
     private String password;
     @AssertTrue(message = "Musisz zaakceptować regulamin.")
     private boolean accepted;

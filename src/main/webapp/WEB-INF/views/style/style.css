@@ -8,21 +8,33 @@ body {
     height: 50px;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
+    padding: 0 20px;
 }
 
 .header a {
-    color: white;
+    color: cadetblue;
     text-decoration: none;
-    padding-right: 20px;
+    margin-left: 20px;
 }
 
 .header a:first-child {
-    margin-right: 1690px;
+    margin-left: 0px;
+}
+
+.header button {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 20px;
 }
 
 
 
+#popup {
+    z-index: 9999;
+}
 .main {
     display: flex;
 }
@@ -200,7 +212,24 @@ input[type="checkbox"] {
     height: 50px;
     width: 50px;
 }
+button {
+    background-color: #333333; /* Kolor tła */
+    border: none; /* Usunięcie obramowania */
+    color: white; /* Kolor tekstu */
+    padding: 10px 20px; /* Wewnętrzny padding */
+    text-align: center; /* Wyśrodkowanie tekstu */
+    text-decoration: none; /* Usunięcie podkreślenia */
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px;
+    cursor: pointer; /* Zmiana kursora na "pointer" po najechaniu */
+    border-radius: 5px; /* Zaokrąglenie narożników */
+    transition: background-color 0.3s; /* Efekt przejścia przy najechaniu */
+}
 
+button:hover {
+    background-color: black; /* Kolor tła po najechaniu */
+}
 
 
 

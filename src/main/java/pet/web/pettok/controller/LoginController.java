@@ -53,10 +53,9 @@ public class LoginController {
     public String postLogin(@RequestParam("email") String email,
                             @RequestParam("password") String password,
                             HttpSession session) {
-        String hashed = userRepository.findPasswordByEmail(email);
-        boolean passwordMatch = BCrypt.checkpw(password, hashed);
-        System.out.println(passwordMatch);
         try {
+            String hashed = userRepository.findPasswordByEmail(email);
+            boolean passwordMatch = BCrypt.checkpw(password, hashed);
             if (hashed != null && passwordMatch) {
                 System.out.println("logged in");
                 session.setAttribute("email",email);

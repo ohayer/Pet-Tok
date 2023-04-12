@@ -1,15 +1,19 @@
 package pet.web.pettok.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import pet.web.pettok.AnimalsFunFacts;
 import pet.web.pettok.UserRepository;
 import pet.web.pettok.entity.Holidays;
 import pet.web.pettok.holidays.HolidayRepository;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Random;
 
 @Controller
 @Slf4j
@@ -17,10 +21,12 @@ public class HomeController {
 
     private final HolidayRepository holidayRepository;
     private final UserRepository userRepository;
+    private final AnimalsFunFacts animalsFunFacts;
 
-    public HomeController(HolidayRepository holidayRepository, UserRepository userRepository) {
+    public HomeController(HolidayRepository holidayRepository, UserRepository userRepository, AnimalsFunFacts animalsFunFacts) {
         this.holidayRepository = holidayRepository;
         this.userRepository = userRepository;
+        this.animalsFunFacts = animalsFunFacts;
     }
 
     @GetMapping(value = "/")
@@ -32,6 +38,11 @@ public class HomeController {
         }catch (NullPointerException e) {
             System.out.println(e.getMessage() + "sesja z emailem jest null");
         }
+        Elements elements =  animalsFunFacts.animalsFacts();
+        Random random = new Random();
+        int randomIndex = new Random().nextInt(elements.size() - 16) + 8;
+        Element randomElement = elements.get(randomIndex);
+        model.addAttribute("randomElement", randomElement);
         model.addAttribute("holidays", all);
         return "home";
     }

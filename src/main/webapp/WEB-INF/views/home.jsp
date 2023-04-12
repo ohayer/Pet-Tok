@@ -17,8 +17,18 @@
 <div class="header">
     <a href="/">Strona główna</a>
     <% if (session.getAttribute("email") != null) { %>
+    <a href="/create">Kreator Pupili</a>
+    <a href="/search">Przeglądaj Pupile</a>
+    <button onclick="showPopup()">Wylosuj ciekawostkę</button>
+    <div id="popup" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background:white; border:1px solid black; padding:20px;">
+        <div style="display:flex; justify-content:flex-end;"><button onclick="hidePopup()">x</button></div>
+        <h3>${randomElement}</h3>
+    </div>
     <a href="http://localhost:8080/logout">Wyloguj się</a>
     <% } else { %>
+
+    <a href="/login">Kreator Pupili</a>
+    <a href="/login">Przeglądaj Pupile</a>
     <a href="/login">Zaloguj się</a>
     <% } %>
 
@@ -32,9 +42,6 @@
         <h2>Kliknij <a href="/register">Stwórz konto</a> </h2>
         <h2>Lub kliknij <a href="/login">Zaloguj się</a>, aby się zalogować</h2>
         <% } %>
-<%--        <h1>Nie masz jeszcze u nas konta?</h1>--%>
-<%--        <h2>Kliknij <a href="/register">Stwórz konto</a> </h2>--%>
-<%--        <h2>Lub kliknij <a href="/login">Zaloguj się</a>, aby się zalogować</h2>--%>
         <p class="bot-text">Strona stworzona z myślą o naszych słodkich pupilach</p>
         <img class="foot" src="img/paw.png">
     </div>
