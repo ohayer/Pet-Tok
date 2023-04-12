@@ -8,6 +8,7 @@ import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @Setter
 @Getter
@@ -31,5 +32,7 @@ public class Users {
     private String password;
     @AssertTrue(message = "Musisz zaakceptować regulamin.")
     private boolean accepted;
+    @OneToMany
+    private List<Pets> pets;
 
 }

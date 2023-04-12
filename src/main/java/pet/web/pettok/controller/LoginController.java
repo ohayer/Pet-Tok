@@ -1,12 +1,11 @@
 package pet.web.pettok.controller;
 
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import pet.web.pettok.UserRepository;
+import pet.web.pettok.repository.UserRepository;
 import pet.web.pettok.entity.Users;
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -60,7 +59,6 @@ public class LoginController {
                 System.out.println("logged in");
                 session.setAttribute("email",email);
                 session.setMaxInactiveInterval(60*5);
-                System.out.println(session.getAttribute("email"));
                 return "redirect:/";
             } else {
                 return "redirect:login";

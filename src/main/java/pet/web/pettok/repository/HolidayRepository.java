@@ -1,10 +1,9 @@
-package pet.web.pettok.holidays;
+package pet.web.pettok.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import pet.web.pettok.entity.Holidays;
 
-import java.time.Month;
 import java.util.List;
 
 public interface HolidayRepository extends JpaRepository<Holidays,Long> {

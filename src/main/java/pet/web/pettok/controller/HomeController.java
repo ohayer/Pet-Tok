@@ -6,10 +6,10 @@ import org.jsoup.select.Elements;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import pet.web.pettok.AnimalsFunFacts;
-import pet.web.pettok.UserRepository;
+import pet.web.pettok.starts.AnimalsFunFacts;
+import pet.web.pettok.repository.UserRepository;
 import pet.web.pettok.entity.Holidays;
-import pet.web.pettok.holidays.HolidayRepository;
+import pet.web.pettok.repository.HolidayRepository;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -39,7 +39,6 @@ public class HomeController {
             System.out.println(e.getMessage() + "sesja z emailem jest null");
         }
         Elements elements =  animalsFunFacts.animalsFacts();
-        Random random = new Random();
         int randomIndex = new Random().nextInt(elements.size() - 16) + 8;
         Element randomElement = elements.get(randomIndex);
         model.addAttribute("randomElement", randomElement);
