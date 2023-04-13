@@ -59,11 +59,14 @@ public class CreateController {
         try {
             String emailOfUser = (String) session.getAttribute("email");
             Users user = userRepository.findUsersByEmail(emailOfUser);
-            List<Pets> pets = new ArrayList<>();
-            pets.add(pet);
-            user.setPets(pets);
-            petService.saveImage(imageFile);
+            List<Pets> userPets = user.getPets();
+            if (userPets == null) {
+                userPets = new ArrayList<>();
+                user.setPets(userPets);
+            }
+            userPets.add(pet);
             petsRepository.save(pet);
+            petService.saveImage(imageFile, pet.getId().toString());
             return "redirect:/";
         } catch (NullPointerException e) {
             e.printStackTrace();
@@ -73,19 +76,5 @@ public class CreateController {
         }
     }
 
-    @GetMapping("/image")
-    public String imageGet() {
-        return "image";
-    }
-
-    @PostMapping("/image")
-    public String imagePost(@RequestParam("image") MultipartFile imageFile) {
-        try {
-            petService.saveImage(imageFile);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        return "redirect:/";
-    }
 }
 

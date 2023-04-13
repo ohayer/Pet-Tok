@@ -41,12 +41,11 @@
             <form:errors path="name"/>
             <br><br>
             <label>Opis</label>
-            <form:textarea id='text' maxlength="225" path="description"
+            <form:textarea id='text' maxlength="255" path="description"
                            placeholder="Tutaj powinny znajdować się podstawowe dane na temat twojego zwierzaczka. Np kiedy ma urodziny,co lubi jeść, jak sie nazywa jego ulubiona zabawka, jak bardzo jest kochany."
                            onkeyup="countChars()"></form:textarea>
-            <div id="charNum">0/225</div>
+            <div id="charNum">0/255</div>
             <form:errors path="description"/>
-
             <br><br>
             <label>Typ ukochanego zwierzaczka</label>
             <form:select path="type">
@@ -60,8 +59,7 @@
             <form:errors path="type"/>
             <br><br>
             <label>Wybierz zdjęcie tylko w formacie png lub jpeg;</label>
-            <form:input  path="photos" type="file" name="image" accept="image/jpeg, image/png"/>
-            <form:errors path="photos"/>
+            <input  type="file" name="image" accept="image/jpeg, image/png"/>
             <input type="submit">
         </form:form>
         <p class="bot-text">Strona stworzona z myślą o naszych słodkich pupilach</p>
