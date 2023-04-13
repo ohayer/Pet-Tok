@@ -35,7 +35,7 @@
 <div class="main">
     <div class="white">
         <h1 style="color: #3e8e41">Dodaj swojego ukochanego członka rodziny</h1>
-        <form:form method="post" modelAttribute="pet">
+        <form:form method="post" modelAttribute="pet" enctype="multipart/form-data">
             <label>Imię twojego pupila</label>
             <form:input path="name"/>
             <form:errors path="name"/>
@@ -51,15 +51,17 @@
             <label>Typ ukochanego zwierzaczka</label>
             <form:select path="type">
                 <form:option value="pies">piesek</form:option>
-                <form:option value="option2">kotek</form:option>
-                <form:option value="option3">gryzoń</form:option>
-                <form:option value="option4">rybka</form:option>
+                <form:option value="kot">kotek</form:option>
+                <form:option value="gryzoń">gryzoń</form:option>
+                <form:option value="ryba">rybka</form:option>
+                <form:option value="ptak">ptaszek</form:option>
+                <form:option value="gad">gad</form:option>
             </form:select>
             <form:errors path="type"/>
             <br><br>
-            <label for="file-upload" class="custom-file-upload">Wybierz zdjęcie tylko w formacie png lub jpeg;</label>
-            <form:input id="file-upload" path="image" type="file" accept="image/jpeg, image/png"/>
-            <form:errors path="image"/>
+            <label>Wybierz zdjęcie tylko w formacie png lub jpeg;</label>
+            <form:input  path="photos" type="file" name="image" accept="image/jpeg, image/png"/>
+            <form:errors path="photos"/>
             <input type="submit">
         </form:form>
         <p class="bot-text">Strona stworzona z myślą o naszych słodkich pupilach</p>

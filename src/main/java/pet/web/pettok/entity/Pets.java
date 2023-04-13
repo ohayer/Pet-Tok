@@ -23,8 +23,8 @@ public class Pets {
     @NotNull
     private String type;
     private int rating;
-    @Lob
-    @NotNull
-    private byte[] image;
+
+    @Column(nullable = false,length = 64)
+    private String photos;
 
 }
