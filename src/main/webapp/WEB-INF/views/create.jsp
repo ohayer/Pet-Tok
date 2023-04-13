@@ -50,7 +50,7 @@
             <br><br>
             <label>Typ ukochanego zwierzaczka</label>
             <form:select path="type">
-                <form:option value="option1">piesek</form:option>
+                <form:option value="pies">piesek</form:option>
                 <form:option value="option2">kotek</form:option>
                 <form:option value="option3">gryzoń</form:option>
                 <form:option value="option4">rybka</form:option>

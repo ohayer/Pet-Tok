@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 @Setter
@@ -25,4 +26,5 @@ public class Pets {
     @Lob
     @NotNull
     private byte[] image;
+
 }

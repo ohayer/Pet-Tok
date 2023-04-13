@@ -8,8 +8,8 @@ function hidePopup() {
 }
 //zliczanie słów textarea
 function countChars() {
-    var charNum = document.getElementById('charNum');
-    var textLength = document.getElementById('text').value.length;
+    let charNum = document.getElementById('charNum');
+    let textLength = document.getElementById('text').value.length;
 
     charNum.innerHTML = textLength + '/225';
 
