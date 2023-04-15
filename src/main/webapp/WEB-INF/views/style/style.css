@@ -230,10 +230,7 @@ button {
 button:hover {
     background-color: black; /* Kolor tła po najechaniu */
 }
-textarea {
-    width: 100%;
-    height: 150px;
-}
+
 select {
     font-size: 15px;
     font-weight: bold;
@@ -257,11 +254,28 @@ option {
     background-color: #fff;
     color: #333;
 }
+textarea {
+    width: 100%;
+    height: 150px;
+}
 #charNum {
     position: relative;
     bottom: 30px;
     right: 230px;
     font-size: 12px;
+}
+.images{
+    height: 15%;
+}
+
+.description-pet {
+    border: 4px solid cadetblue;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 20px;
 }
 
 

@@ -13,4 +13,7 @@ public interface UserRepository extends JpaRepository<Users,Long> {
 
     Users findUsersByEmail(String email);
 
+    @Query(value = "SELECT * FROM USERS join users_pets where pets_id = ?1",nativeQuery = true)
+    Users findByIdPets(Long id);
+
 }

@@ -1,4 +1,5 @@
 package pet.web.pettok.starts;
+
 import org.jsoup.*;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -7,9 +8,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+
 @Component
 public class AnimalsFunFacts {
-//    public static void main(String[] args) {
+    //    public static void main(String[] args) {
 ////        try{
 ////            Document doc = Jsoup
 ////                    .connect("https://fajnepodroze.pl/ciekawostki-o-zwierzetach/")
@@ -24,8 +26,8 @@ public class AnimalsFunFacts {
 ////        }
 //    }
     @Bean
-    public Elements animalsFacts(){
-        try{
+    public Elements animalsFacts() {
+        try {
             Document doc = Jsoup
                     .connect("https://fajnepodroze.pl/ciekawostki-o-zwierzetach/")
                     .get();
@@ -36,7 +38,7 @@ public class AnimalsFunFacts {
 //            }
             return links;
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;

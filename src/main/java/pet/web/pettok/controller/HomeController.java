@@ -35,10 +35,10 @@ public class HomeController {
         try {
             String email = session.getAttribute("email").toString();
             model.addAttribute("name", userRepository.findNameSurnameByEmail(email).replace(",", " "));
-        }catch (NullPointerException e) {
+        } catch (NullPointerException e) {
             System.out.println(e.getMessage() + "sesja z emailem jest null");
         }
-        Elements elements =  animalsFunFacts.animalsFacts();
+        Elements elements = animalsFunFacts.animalsFacts();
         int randomIndex = new Random().nextInt(elements.size() - 16) + 8;
         Element randomElement = elements.get(randomIndex);
         model.addAttribute("randomElement", randomElement);

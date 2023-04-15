@@ -24,7 +24,4 @@ public class Pets {
     private String type;
     private int rating;
 
-    @Column(nullable = false,length = 64)
-    private String photos;
-
 }

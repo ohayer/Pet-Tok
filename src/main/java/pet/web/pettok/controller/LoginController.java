@@ -57,19 +57,20 @@ public class LoginController {
             boolean passwordMatch = BCrypt.checkpw(password, hashed);
             if (hashed != null && passwordMatch) {
                 System.out.println("logged in");
-                session.setAttribute("email",email);
-                session.setMaxInactiveInterval(60*5);
+                session.setAttribute("email", email);
+                session.setMaxInactiveInterval(60 * 5);
                 return "redirect:/";
             } else {
                 return "redirect:login";
             }
-        } catch (NullPointerException  e) {
+        } catch (NullPointerException e) {
             System.err.println(e.getMessage() + " nie ma takiego emiala bądź hasła");
             return "redirect:/login";
         }
     }
+
     @GetMapping("/logout")
-    public String getLogout(HttpSession session){
+    public String getLogout(HttpSession session) {
         session.removeAttribute("email");
         return "redirect:http://localhost:8080/";
     }

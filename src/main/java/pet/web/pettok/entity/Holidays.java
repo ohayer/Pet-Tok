@@ -20,7 +20,6 @@ public class Holidays {
     private Long id;
     private String day;
     private String name;
-
     private Month month;
 
 

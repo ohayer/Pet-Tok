@@ -28,11 +28,10 @@ public class Users {
     @Email(message = "Wpisz poprawny email.")
     @NotNull(message = "To pole nie może być puste.")
     private String email;
-    @Size(min = 6,message = "To pole musi być trochę dłuższe.")
+    @Size(min = 6, message = "To pole musi być trochę dłuższe.")
     private String password;
     @AssertTrue(message = "Musisz zaakceptować regulamin.")
     private boolean accepted;
     @OneToMany
     private List<Pets> pets;
-
 }

@@ -58,7 +58,7 @@
             </form:select>
             <form:errors path="type"/>
             <br><br>
-            <label>Wybierz zdjęcie tylko w formacie png lub jpeg;</label>
+            <label>Wybierz zdjęcie tylko w formacie png lub jpeg (zalecany jest format png);</label>
             <input  type="file" name="image" accept="image/jpeg, image/png"/>
             <input type="submit">
         </form:form>

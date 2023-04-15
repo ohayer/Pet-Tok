@@ -7,5 +7,5 @@ import pet.web.pettok.entity.Pets;
 import java.io.IOException;
 
 public interface PetsRepository extends JpaRepository<Pets,Long> {
-
+//        Pets findById();
 }

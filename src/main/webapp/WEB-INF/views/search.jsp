@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: olik0
-  Date: 15.04.2023
-  Time: 12:57
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -34,23 +28,41 @@
 </div>
 <div class="main">
     <div class="white">
-        <div style="border: 2px solid dimgray; padding: 0; display: inline-block; margin-left: 180px; margin-top: 170px; position: relative; width: 500px; height: 500px;">
+        <h2>Imię: ${pet.name}, Nazwa właściciela: ${user.name} ${user.surname}</h2>
+        <div style="border: 1px solid dimgray; padding: 0; display: inline-block; margin-left: 180px; margin-top: 100px; position: relative; width: 500px; height: 500px;">
             <img src="${imageSrc}" alt="${imageSrc}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
         </div>
 
+        <c:if test="${pet.type eq 'ryba'}">
+            <img class="images" src="icons/fish.png">
+        </c:if>
+        <c:if test="${pet.type eq 'ptak'}">
+            <img class="images" src="icons/bird.png">
+        </c:if>
+        <c:if test="${pet.type eq 'gad'}">
+            <img class="images" src="icons/turtle.png">
+        </c:if>
+        <c:if test="${pet.type eq 'pies'}">
+            <img class="images" src="icons/dog.png">
+        </c:if>
+        <c:if test="${pet.type eq 'kot'}">
+            <img class="images" src="icons/cat.png">
+        </c:if>
+        <c:if test="${pet.type eq 'gryzoń'}">
+            <img class="images" src="icons/rabbit.png">
+        </c:if>
+        <br><br>
+        <button onclick="window.history.back()" style="margin-left: 300px">Poprzedni</button>
+        <button onclick="location.reload()">Następny</button>
         <p class="bot-text">Strona stworzona z myślą o naszych słodkich pupilach</p>
         <img class="foot" src="img/paw.png">
     </div>
     <div class="gray">
-        <h1>Imię:</h1>
-        <h3>${pet.name}</h3>
         <h1>Opis zwierzaczka:</h1>
-        <h3>${pet.description}</h3>
-        <h1>Ilość polubień</h1>
-        <h3>${pet.rating}</h3>
-        <h1>Typ :</h1>
-        <h3>${pet.type}</h3>
-<%--        <img class="dog" src="img/dog.png" style="position: absolute">--%>
+        <h3 class="description-pet">${pet.description}</h3>
+        <h1 style="margin-top: 110px">Likes: ${pet.rating}</h1>
+        <h1 style="margin-top: 200px">Nie dodałeś jeszcze swojego pupila? Masz okazję, przejdź w ten <a href="http://localhost:8080/create">link</a>
+            i dodaj własne zwierzątko do naszego portalu! </h1>
     </div>
 </div>
 </body>
