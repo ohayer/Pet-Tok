@@ -6,6 +6,7 @@ import pet.web.pettok.repository.PetImageRepository;
 import pet.web.pettok.repository.PetsRepository;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -29,13 +30,41 @@ public class PetService implements PetImageRepository {
         Files.write(path, bytes);
     }
 
+//    @Override
+//    public String getImage() throws IOException {
+//        String folder = "C:\\projectImages\\";
+//        File[] files = new File(folder).listFiles();
+//        Random rand = new Random();
+//        File randomFile = files[rand.nextInt(files.length)];
+//        return randomFile.getPath();
+//    }
+
     @Override
-    public String getImage() throws IOException {
+    public String getImageByName(Long imageName) throws IOException {
+        String folder = "C:\\projectImages\\";
+        File[] files = new File(folder).listFiles();
+        for (File file : files) {
+            String fileName = file.getName();
+            String extension = fileName.substring(fileName.lastIndexOf('.') + 1);
+            String nameWithoutExtension = fileName.substring(0, fileName.length() - extension.length() - 1);
+            if (nameWithoutExtension.equals(imageName.toString())) {
+                return file.getPath();
+            }
+        }
+        throw new FileNotFoundException("Could not find file with name: " + imageName);
+    }
+
+    @Override
+    public String returnImageName() throws IOException {
         String folder = "C:\\projectImages\\";
         File[] files = new File(folder).listFiles();
         Random rand = new Random();
         File randomFile = files[rand.nextInt(files.length)];
-        return randomFile.getPath();
+        String nameOfFile = randomFile.getName();
+        int extensionIndex = nameOfFile.lastIndexOf(".");
+        String imageName = nameOfFile.substring(0, extensionIndex);
+        return imageName;
     }
+
 
 }

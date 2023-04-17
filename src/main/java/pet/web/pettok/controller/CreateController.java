@@ -1,6 +1,4 @@
 package pet.web.pettok.controller;
-
-import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,11 +14,7 @@ import pet.web.pettok.entity.Users;
 import pet.web.pettok.repository.PetsRepository;
 import pet.web.pettok.repository.UserRepository;
 import pet.web.pettok.service.PetService;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.Part;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -66,6 +60,10 @@ public class CreateController {
             }
             userPets.add(pet);
             petsRepository.save(pet);
+            if (imageFile.isEmpty()) {
+                result.rejectValue("image", "error.image", "Dodaj plik graficzny");
+                return "redirect:/create";
+            }
             petService.saveImage(imageFile, pet.getId().toString());
             return "redirect:/";
         } catch (NullPointerException e) {

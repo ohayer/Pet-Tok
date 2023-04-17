@@ -24,6 +24,7 @@
         <div style="display:flex; justify-content:flex-end;"><button onclick="hidePopup()">x</button></div>
         <h3>${randomElement}</h3>
     </div>
+    <a href="/account">Zarządzaj kontem</a>
     <a href="http://localhost:8080/logout">Wyloguj się</a>
     <% } else { %>
 

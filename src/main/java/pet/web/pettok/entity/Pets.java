@@ -1,10 +1,10 @@
 package pet.web.pettok.entity;
-
 import lombok.*;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Setter
@@ -16,11 +16,11 @@ public class Pets {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotNull
+    @NotBlank(message = "To pole nie może być puste")
     private String name;
-    @NotNull
+    @NotBlank(message = "To pole nie może być puste")
     private String description;
-    @NotNull
+    @NotBlank(message = "To pole nie może być puste")
     private String type;
     private int rating;
 

@@ -6,10 +6,10 @@ import org.jsoup.select.Elements;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import pet.web.pettok.starts.AnimalsFunFacts;
-import pet.web.pettok.repository.UserRepository;
 import pet.web.pettok.entity.Holidays;
 import pet.web.pettok.repository.HolidayRepository;
+import pet.web.pettok.repository.UserRepository;
+import pet.web.pettok.starts.AnimalsFunFacts;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -22,6 +22,7 @@ public class HomeController {
     private final HolidayRepository holidayRepository;
     private final UserRepository userRepository;
     private final AnimalsFunFacts animalsFunFacts;
+
 
     public HomeController(HolidayRepository holidayRepository, UserRepository userRepository, AnimalsFunFacts animalsFunFacts) {
         this.holidayRepository = holidayRepository;
@@ -41,6 +42,7 @@ public class HomeController {
         Elements elements = animalsFunFacts.animalsFacts();
         int randomIndex = new Random().nextInt(elements.size() - 16) + 8;
         Element randomElement = elements.get(randomIndex);
+
         model.addAttribute("randomElement", randomElement);
         model.addAttribute("holidays", all);
         return "home";

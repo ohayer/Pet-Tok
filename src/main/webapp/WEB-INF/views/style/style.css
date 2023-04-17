@@ -277,6 +277,19 @@ textarea {
     font-family: Arial, sans-serif;
     font-size: 20px;
 }
+.style-submit{
+    background-color: transparent;
+    border: none;
+    color: red;
+    font-size: 32px;
+    outline: none;
+    padding: 0;
+}
+.style-submit:hover{
+    color: white;
+    background-color: red;
+    cursor: pointer;
+}
 
 
 
