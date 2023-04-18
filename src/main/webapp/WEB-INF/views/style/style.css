@@ -290,6 +290,32 @@ textarea {
     background-color: red;
     cursor: pointer;
 }
+table {
+    border-collapse: collapse;
+    width: 80%;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+
+th {
+    background-color: #333;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tbody tr:hover {
+    background-color: #ddd;
+}
+
+
 
 
 
