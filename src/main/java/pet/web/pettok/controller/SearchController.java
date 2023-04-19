@@ -65,8 +65,14 @@ public class SearchController {
             Optional<Pets> pet = petsRepository.findById(id);
             Users user = userRepository.findByIdPets(id);
 
+
+            Likes likes = likesRepository.getLikesByEmailAndId(user.getId(), pet.get().getId());
+            model.addAttribute("likes", likes);
+
+            pet.ifPresent(p -> {
+                model.addAttribute("pet", pet.get());
+            });
             model.addAttribute("user", user);
-            model.addAttribute("pet", pet.get());
             model.addAttribute("imageSrc", imageSrc);
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -86,18 +92,20 @@ public class SearchController {
         if (likes == null) {
             likes = new Likes();
             likes.setUser(users);
+
+
             likes.setPet(pet.get());
             int rating = pet.get().getRating();
             likesRepository.save(likes);
             pet.get().setRating(rating + 1);
             petsRepository.save(pet.get());
-            model.addAttribute("liked",false);
+            model.addAttribute("liked", false);
         } else {
-                int rating = pet.get().getRating();
-                pet.get().setRating(rating -1);
-                petsRepository.save(pet.get());
-                likesRepository.deleteByUserId(users.getId());
-            model.addAttribute("liked",true);
+            int rating = pet.get().getRating();
+            pet.get().setRating(rating - 1);
+            petsRepository.save(pet.get());
+            likesRepository.deleteByPetId(Long.valueOf(id), users.getId());
+            model.addAttribute("liked", true);
         }
         return "redirect:/search/" + id;
     }

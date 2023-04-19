@@ -23,6 +23,7 @@
     <% if (session.getAttribute("email") != null) { %>
     <a href="/create">Kreator Pupili</a>
     <a href="/search">Przeglądaj Pupile</a>
+    <a href="/account">Zarządzaj kontem</a>
     <a href="http://localhost:8080/logout">Wyloguj się</a>
     <% } else { %>
 
@@ -74,6 +75,8 @@
   position: absolute;
   margin-top: 200px;
   margin-left: 400px;">
+        <p style="margin-top: 700px;font-family:'Microsoft YaHei UI Light';font-size: larger;color: darkblue">Uwaga*: Jeżeli jest to zwierzątko ze schroniska, to bardzo proszę o podanie informacji na temat schroniska w opisie. Przykładowo może to być numer telefonu lub
+        adres siedziby.</p>
     </div>
 </div>
 </body>

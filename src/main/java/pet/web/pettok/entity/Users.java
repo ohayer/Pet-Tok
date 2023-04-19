@@ -1,7 +1,12 @@
 package pet.web.pettok.entity;
+
 import lombok.*;
+
 import javax.persistence.*;
-import javax.validation.constraints.*;
+import javax.validation.constraints.AssertTrue;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Setter

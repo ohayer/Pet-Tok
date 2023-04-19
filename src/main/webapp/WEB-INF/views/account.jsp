@@ -20,13 +20,15 @@
     <a href="/logout">Wyloguj się</a>
 </div>
 <div class="table-wrapper">
+    <h2 style="text-align: left">Twoje pupile:</h2>
     <table>
         <thead>
         <tr>
             <th>Imię</th>
             <th>Opis</th>
             <th>Typ</th>
-            <th>Rating</th>
+            <th>Liczba polubień</th>
+            <th>Usuń</th>
         </tr>
         </thead>
         <tbody>
@@ -36,6 +38,15 @@
                 <td>${pet.description}</td>
                 <td>${pet.type}</td>
                 <td>${pet.rating}</td>
+                <td>
+                    <form method="post">
+                        <input formaction="/delete/${pet.id}" type="submit" class="style-submit" value="🗑️"
+                               style="background-color: transparent;
+                            font-size: 30px;
+                            outline: none;
+                            padding: 0;">
+                    </form>
+                </td>
             </tr>
         </c:forEach>
         </tbody>

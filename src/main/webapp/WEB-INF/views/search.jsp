@@ -17,6 +17,7 @@
     <% if (session.getAttribute("email") != null) { %>
     <a href="/create">Kreator Pupili</a>
     <a href="/search">Przeglądaj Pupile</a>
+    <a href="/account">Zarządzaj kontem</a>
     <a href="http://localhost:8080/logout">Wyloguj się</a>
     <% } else { %>
 
@@ -61,9 +62,10 @@
         <h3 class="description-pet">${pet.description}</h3>
         <h1 style="margin-top: 110px">Likes: ${pet.rating}</h1>
         <form method="post">
-            <input onmouseover="this.style.color=`red`" onmouseout="this.style.color='grey'" type="submit" class="style-submit" value="❤"
+            <c:set var="color" value="${not empty likes ? 'red' : 'grey'}" />
+            <input   onmouseover="this.style.color=`red`" onmouseout="this.style.color='${color}'" type="submit" class="style-submit" value="❤"
             style="background-color: transparent;
-            color: grey;
+            color: ${color};
         font-size: 60px;
         outline: none;
         padding: 0;">

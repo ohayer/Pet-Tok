@@ -292,12 +292,12 @@ textarea {
 }
 table {
     border-collapse: collapse;
-    width: 80%;
+    width: 100%;
 }
 
 th, td {
     padding: 8px;
-    text-align: left;
+    text-align: center;
     border-bottom: 1px solid #ccc;
 }
 
@@ -305,6 +305,7 @@ th {
     background-color: #333;
     color: #fff;
     text-transform: uppercase;
+    text-align: center;
 }
 
 tbody tr:nth-child(even) {

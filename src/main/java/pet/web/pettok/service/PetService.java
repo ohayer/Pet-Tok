@@ -30,14 +30,6 @@ public class PetService implements PetImageRepository {
         Files.write(path, bytes);
     }
 
-//    @Override
-//    public String getImage() throws IOException {
-//        String folder = "C:\\projectImages\\";
-//        File[] files = new File(folder).listFiles();
-//        Random rand = new Random();
-//        File randomFile = files[rand.nextInt(files.length)];
-//        return randomFile.getPath();
-//    }
 
     @Override
     public String getImageByName(Long imageName) throws IOException {
@@ -64,6 +56,19 @@ public class PetService implements PetImageRepository {
         int extensionIndex = nameOfFile.lastIndexOf(".");
         String imageName = nameOfFile.substring(0, extensionIndex);
         return imageName;
+    }
+
+    @Override
+    public void deleteImage(String name) throws IOException {
+        String folder = "C:\\projectImages\\";
+        Path path = Paths.get(folder + name + ".jpg");
+        if (Files.exists(path)) {
+            Files.delete(path);
+        }
+        path = Paths.get(folder + name + ".png");
+        if (Files.exists(path)) {
+            Files.delete(path);
+        }
     }
 
 
