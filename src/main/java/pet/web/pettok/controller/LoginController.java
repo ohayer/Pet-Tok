@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pet.web.pettok.repository.UserRepository;
 import pet.web.pettok.entity.Users;
 import org.mindrot.jbcrypt.BCrypt;
@@ -51,7 +52,8 @@ public class LoginController {
     @PostMapping("/login")
     public String postLogin(@RequestParam("email") String email,
                             @RequestParam("password") String password,
-                            HttpSession session) {
+                            HttpSession session,
+                            RedirectAttributes redirectAttributes) {
         try {
             String hashed = userRepository.findPasswordByEmail(email);
             boolean passwordMatch = BCrypt.checkpw(password, hashed);
@@ -61,10 +63,11 @@ public class LoginController {
                 session.setMaxInactiveInterval(60 * 5);
                 return "redirect:/";
             } else {
+                redirectAttributes.addAttribute("error", "invalid_credentials");
                 return "redirect:login";
             }
         } catch (NullPointerException e) {
-            System.err.println(e.getMessage() + " nie ma takiego emiala bądź hasła");
+            redirectAttributes.addAttribute("error", "invalid_credentials");
             return "redirect:/login";
         }
     }

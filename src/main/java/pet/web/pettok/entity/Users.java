@@ -3,10 +3,7 @@ package pet.web.pettok.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.AssertTrue;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.List;
 
 @Setter
@@ -27,10 +24,20 @@ public class Users {
     @Email(message = "Wpisz poprawny email.")
     @NotBlank(message = "To pole nie może być puste.")
     private String email;
-    @Size(min = 6, message = "To pole musi być trochę dłuższe.")
+
+    @Size(min = 6, message = "Hasło nie może mieć mniej niż 6 znaków")
+    @Pattern.List({
+            @Pattern(regexp = ".*[a-z].*", message = "Hasło musi zawierać co najmniej jedną małą literę"),
+            @Pattern(regexp = ".*[A-Z].*", message = "Hasło musi zawierać co najmniej jedną dużą literę"),
+            @Pattern(regexp = ".*\\d.*", message = "Hasło musi zawierać co najmniej jedną cyfrę"),
+            @Pattern(regexp = ".*[@#$%^&+=].*", message = "Hasło musi zawierać co najmniej jeden znak specjalny (@#$%^&+=)")
+    })
     private String password;
     @AssertTrue(message = "Musisz zaakceptować regulamin.")
     private boolean accepted;
     @OneToMany
     private List<Pets> pets;
+
+    @Column(name = "password_reset_code")
+    private String passwordResetCode;
 }

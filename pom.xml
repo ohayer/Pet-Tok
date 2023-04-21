@@ -17,7 +17,13 @@
         <java.version>17</java.version>
     </properties>
     <dependencies>
-<!--        bibliotek do hashu-->
+<!--        email sender-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+
+        <!--        bibliotek do hashu-->
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
