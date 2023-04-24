@@ -1,5 +1,6 @@
 package pet.web.pettok.service;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
@@ -16,9 +17,14 @@ public class UserServiceImpl implements UserService {
 
     private JavaMailSender javaMailSender;
 
+
     public UserServiceImpl(UserRepository userRepository, JavaMailSender javaMailSender) {
         this.userRepository = userRepository;
         this.javaMailSender = javaMailSender;
+    }
+
+    String hashPassword(String password) {
+        return BCrypt.hashpw(password, BCrypt.gensalt());
     }
 
     @Override
@@ -47,7 +53,8 @@ public class UserServiceImpl implements UserService {
         if (!user.getPasswordResetCode().equals(code)) {
             throw new RuntimeException("Invalid password reset code.");
         }
-        user.setPassword(password);
+        String hashedPass = hashPassword(user.getPassword());
+        user.setPassword(hashedPass);
         user.setPasswordResetCode(null);
         userRepository.save(user);
     }
