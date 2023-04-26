@@ -34,17 +34,18 @@ public class AccountController {
     @GetMapping("/account")
     public String getAccount(HttpSession session,
                              Model model) {
-        if (session.getAttribute("email")!=null) {
+        if (session.getAttribute("email") != null) {
             String email = (String) session.getAttribute("email");
             Users user = userRepository.findUsersByEmail(email);
             List<Pets> pets = petsRepository.findPetsByUserId(user.getId());
             model.addAttribute("pets", pets);
-        }else {
+        } else {
             return "home";
         }
 
         return "account";
     }
+
     @Transactional
     @PostMapping("/delete/{id}")
     public String deletePet(@PathVariable Long id) {

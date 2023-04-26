@@ -42,16 +42,19 @@ public class SearchController {
         }
         try {
             String imageName = petService.returnImageName();
-            return "redirect:/search/" + imageName;
+            String encodedImageName = Base64.getEncoder().encodeToString(imageName.getBytes());
+            return "redirect:/search/" + encodedImageName;
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    @GetMapping("/search/{id}")
+    @GetMapping("/search/{ids}")
     public String getSearch(Model model,
                             HttpSession session,
-                            @PathVariable Long id) {
+                            @PathVariable String ids) {
+        String idd = new String(Base64.getDecoder().decode(ids));
+        Long id = Long.valueOf(idd);
         if (session.getAttribute("email") == null) {
             return "redirect:/login";
         }
@@ -63,10 +66,12 @@ public class SearchController {
 
 
             Optional<Pets> pet = petsRepository.findById(id);
+            String email = session.getAttribute("email").toString();
+            Users actualUser = userRepository.findUsersByEmail(email);
             Users user = userRepository.findByIdPets(id);
 
 
-            Likes likes = likesRepository.getLikesByEmailAndId(user.getId(), pet.get().getId());
+            Likes likes = likesRepository.getLikesByUserIdAndPetId(actualUser.getId(), pet.get().getId());
             model.addAttribute("likes", likes);
 
             pet.ifPresent(p -> {
@@ -81,14 +86,15 @@ public class SearchController {
     }
 
     @Transactional
-    @PostMapping("/search/{id}")
-    public String postLike(@PathVariable String id,
-                           HttpSession session,
-                           Model model) {
+    @PostMapping("/search/{ids}")
+    public String postLike(@PathVariable String ids,
+                           HttpSession session) {
+        String idd = new String(Base64.getDecoder().decode(ids));
+        Long id = Long.parseLong(idd);
         String email = (String) session.getAttribute("email");
         Users users = userRepository.findUsersByEmail(email);
-        Likes likes = likesRepository.getLikesByEmailAndId(users.getId(), Long.valueOf(id));
-        Optional<Pets> pet = petsRepository.findById(Long.valueOf(id));
+        Likes likes = likesRepository.getLikesByUserIdAndPetId(users.getId(), id);
+        Optional<Pets> pet = petsRepository.findById(id);
         if (likes == null) {
             likes = new Likes();
             likes.setUser(users);
@@ -99,15 +105,13 @@ public class SearchController {
             likesRepository.save(likes);
             pet.get().setRating(rating + 1);
             petsRepository.save(pet.get());
-            model.addAttribute("liked", false);
         } else {
             int rating = pet.get().getRating();
             pet.get().setRating(rating - 1);
             petsRepository.save(pet.get());
-            likesRepository.deleteByPetId(Long.valueOf(id), users.getId());
-            model.addAttribute("liked", true);
+            likesRepository.deleteByPetId(id, users.getId());
         }
-        return "redirect:/search/" + id;
+        return "redirect:/search/" + ids;
     }
 
 }

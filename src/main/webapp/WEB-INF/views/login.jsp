@@ -15,7 +15,7 @@
 <body>
 <div class="header">
   <a href="/">Strona główna</a>
-  <a href="#">Zaloguj się</a>
+  <a href="/login">Zaloguj się</a>
 </div>
 <div class="main">
   <div class="white">

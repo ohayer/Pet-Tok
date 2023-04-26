@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService {
         if (!user.getPasswordResetCode().equals(code)) {
             throw new RuntimeException("Invalid password reset code.");
         }
-        String hashedPass = hashPassword(user.getPassword());
+        String hashedPass = hashPassword(password);
         user.setPassword(hashedPass);
         user.setPasswordResetCode(null);
         userRepository.save(user);

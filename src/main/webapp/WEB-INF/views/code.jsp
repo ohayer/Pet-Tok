@@ -15,6 +15,7 @@
     <%@include file="/WEB-INF/views/style/reset.css" %>
 </style>
 <body>
+<h1>Kod został podany na adres email: ${email}</h1>
 <form method="post" class="password-reset-form">
     <h2>Resetowanie hasła</h2>
     <p>Wpisz swój adres e-mail, aby zresetować hasło.</p>

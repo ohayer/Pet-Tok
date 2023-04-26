@@ -7,7 +7,7 @@ import pet.web.pettok.entity.Likes;
 
 public interface LikesRepository extends JpaRepository<Likes,Long> {
     @Query(value = "SELECT * FROM LIKES where user_id = ?1 and pet_id=?2",nativeQuery = true)
-    Likes getLikesByEmailAndId(Long userId, Long petId);
+    Likes getLikesByUserIdAndPetId(Long userId, Long petId);
 
     @Modifying
     @Query(value = "DELETE FROM LIKES WHERE pet_id = ?1 and user_id = ?2",nativeQuery = true)

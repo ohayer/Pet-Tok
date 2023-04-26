@@ -113,7 +113,12 @@ public class HolidaysList implements CommandLineRunner {
         holidayRepository.saveAll(Arrays.asList(eagleDay, penguinDay, squirrelDay, zebraDay, groundhogDay, hippoDay,
                 catDay, polarBearDay, whaleDay, wildlifeDay, butterflyDay, pandaDay, frogDay, puppyDay, birdDay, animalDay,
                 beaverDay, pigeonDay, hamsterDay, dolphinDay, elephantDay, penguin2Day, horseDay, tunaDay, koalaDay, kangarooDay,
-                beeDay, parrotDay, animalRightsDay, turtleDay, storkDay, migratoryBirdsDay, endangeredSpeciesDay, otterDay));
+                beeDay, parrotDay, animalRightsDay, turtleDay, storkDay, migratoryBirdsDay, endangeredSpeciesDay, otterDay,
+                circusWithoutAnimalsDay,dogTherapyDay,seaTurtleDay,giraffeDay,cabbageButterflyDay,polishDogDay,chimpanzeeDay,
+                sharkDay,snakeDay,guineaPigDay,tigerDay,beesDay,lionDay,elephantsDay,orangutanDay,mosquitoDay,sharksDay,
+                chinchillaDay,batNight,mooseDay,wildFloraFaunaDay,rhinoDay,gorillaDay,vultureDay,rabbitDay,gliderDay,livestockDay,
+                worldAnimalDay,octopusDay,fishMigrationDay,mongrelDay,animalRemembranceDay,eggDay,jellyfishDay,hedgehogDay,
+                blackCatDay,walrusDay,cheetahDay,llamaDay,monkeyDay,fishDay));
         System.out.println("added");
     }
 }
